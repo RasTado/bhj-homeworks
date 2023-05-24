@@ -22,9 +22,9 @@
 }
 
 .hole_has-mole {
-  background-image: url(https://i.postimg.cc/rmtGV8h9/mole.png);
+  background-image: url("clipart288482.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 75%;
   background-color: brown;
 }
