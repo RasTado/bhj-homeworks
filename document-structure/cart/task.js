@@ -12,7 +12,7 @@ bProdQuan.forEach((buttonQ) => {
     if (e.target.className.includes("inc")) {
       numbPr.textContent++;
     } else {
-      numbPr.textContent > 1 ? numbPr.textContent-- : (numbPr.textContent = 0);
+      numbPr.textContent > 1 ? numbPr.textContent-- : (numbPr.textContent = 1);
     }
   });
 });
@@ -32,25 +32,39 @@ function addProd(prod) {
 
   const prodInCart = cartProds.querySelector(`[data-id="${prodId}"]`);
   if (!prodInCart) {
-    let cartProdCont = document.createElement("div");
-    cartProdCont.classList.add("cart__product");
-    cartProdCont.dataset.id = prodId;
-    let cartProdImg = document.createElement("img");
-    cartProdImg.classList.add("cart__product-image");
-    cartProdImg.src = prodImg;
-    let cartProdNumb = document.createElement("div");
-    cartProdNumb.classList.add("cart__product-count");
-    cartProdNumb.textContent = prodNumb;
-    let cartProdDel = document.createElement("button");
+    // let cartProdCont = document.createElement("div");
+    // cartProdCont.classList.add("cart__product");
+    // cartProdCont.dataset.id = prodId;
+    // let cartProdImg = document.createElement("img");
+    // cartProdImg.classList.add("cart__product-image");
+    // cartProdImg.src = prodImg;
+    // let cartProdNumb = document.createElement("div");
+    // cartProdNumb.classList.add("cart__product-count");
+    // cartProdNumb.textContent = prodNumb;
+    // let cartProdDel = document.createElement("button");
 
-    cartProdDel.classList.add("product__remove");
-    cartProdDel.innerText = "x";
-    cartProdDel.setAttribute("style", "display: block");
+    // cartProdDel.classList.add("product__remove");
+    // cartProdDel.innerText = "x";
+    // cartProdDel.setAttribute("style", "display: block");
 
-    cartProdCont.appendChild(cartProdImg);
-    cartProdCont.appendChild(cartProdNumb);
-    cartProdCont.appendChild(cartProdDel);
-    cartProds.appendChild(cartProdCont);
+    // cartProdCont.appendChild(cartProdImg);
+    // cartProdCont.appendChild(cartProdNumb);
+    // cartProdCont.appendChild(cartProdDel);
+    // cartProds.appendChild(cartProdCont);
+    // console.log(cartProds);
+    cartProdCont = `
+    <div class="cart__product" data-id="${prodId}">
+      <img class="cart__product-image" 
+      src="${prodImg}">
+      <div class="cart__product-count">
+      ${prodNumb}
+      </div>
+      <button class="product__remove" 
+      style="display: block">
+      x
+      </button>
+    </div>`;
+    cartProds.insertAdjacentHTML("beforeEnd", cartProdCont);
     hideCart();
   } else {
     // console.log(prodInCart);
