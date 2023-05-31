@@ -34,17 +34,21 @@ function timeOut(delay) {
 input.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     const wrtMsg = document.getElementById("wrtMsg");
-    if (wrtMsg) {
-      wrtMsg.outerHTML = "";
+    if (input.value.trim() == "") {
+      console.log("Empty filed");
+    } else {
+      if (wrtMsg) {
+        wrtMsg.outerHTML = "";
+      }
+      messages.innerHTML += `
+        <div class="message message_client">
+            <div class="message__text">${input.value}</div>
+            <div class="message__time">${getTime()}</div>
+        </div>`;
+      input.value = "";
+      timeOut(Math.random() * 2000);
+      chatWidgetC.scrollTo(0, chatWidgetC.scrollHeight);
     }
-    messages.innerHTML += `
-      <div class="message message_client">
-          <div class="message__text">${input.value}</div>
-          <div class="message__time">${getTime()}</div>
-      </div>`;
-    input.value = "";
-    timeOut(Math.random() * 2000);
-    chatWidgetC.scrollTo(0, chatWidgetC.scrollHeight);
   }
 });
 
